@@ -64,19 +64,27 @@ kubectl apply -f platform-owners/demo/demo-edge-config.yaml
 
 # wait for gloo edge deployment
 ./tools/wait-for-rollout.sh deployment gateway gloo-system 10
-# wait for keycloak deployment
-./tools/wait-for-rollout.sh deployment keycloak default 10
-# setup keycloak
-./tools/keycloak-setup-virtualservice.sh
+# wait for gloo portal deployment
+./tools/wait-for-rollout.sh deployment gloo-portal-controller gloo-portal 5
+./tools/wait-for-rollout.sh deployment gloo-portal-admin-server gloo-portal 5
+# wait for bookinfo deployment
+../tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v1 10
+../tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v2 10
+
+# hack to get around CORS race issue
+kubectl delete portal ecommerce-portal
+# argocd will recreate the portal with correct CORS config
 
 # echo proxy url
 echo 
 echo "installation complete:"
 echo
-echo "run the commands below to access argocd dashboard at argocd.example.com domain:"
+echo "run the commands below to access argocd dashboard at argocd.example.com and gloo-portal demo at portal.example.com"
 echo 
 echo "cat <<EOF | sudo tee -a /etc/hosts"
 echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') argocd.example.com"
+echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') portal.example.com"
+echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') api.example.com"
 echo "EOF"
 echo
 echo "access argocd at http://argocd.example.com/argo"
@@ -87,10 +95,10 @@ echo "user: admin"
 echo "password: solo.io"
 echo 
 echo "access the bookinfo application at: $(glooctl proxy url --port https | cut -d: -f1-2)/productpage"
-echo
-echo "additional gloo edge feature demos can be found here: cd bookinfo/argo/config/domain/wildcard/edge"
-echo
-echo "keycloak credentials for bookinfo demo:"
-echo "user: user1"
-echo "password: password"
 echo 
+echo "access petstore-portal at https://portal.example.com"
+echo
+echo "gloo-portal credentials:"
+echo "user: developer1"
+echo "password: gloo-portal1"
+echo
