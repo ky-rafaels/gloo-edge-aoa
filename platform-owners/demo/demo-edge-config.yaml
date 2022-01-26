@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-mesh-config
+  name: demo-edge-config
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/ably77/gloo-edge-aoa/
     targetRevision: HEAD
-    path: environments/demo/mesh-config/
+    path: environments/demo/edge-config/
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:

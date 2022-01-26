@@ -57,17 +57,17 @@ cd ..
 ./tools/wait-for-rollout.sh deployment argocd-server argocd 10
 
 # deploy edge demo
+#kubectl apply -f platform-owners/demo/demo-cluster-config.yaml 
 kubectl apply -f platform-owners/demo/demo-apps.yaml 
-kubectl apply -f platform-owners/demo/demo-cluster-config.yaml 
 kubectl apply -f platform-owners/demo/demo-infra.yaml 
-kubectl apply -f platform-owners/demo/demo-mesh-config.yaml 
+kubectl apply -f platform-owners/demo/demo-edge-config.yaml 
 
 # wait for gloo edge deployment
 ./tools/wait-for-rollout.sh deployment gateway gloo-system 10
 # wait for keycloak deployment
 ./tools/wait-for-rollout.sh deployment keycloak default 10
 # setup keycloak
-./keycloak-setup-virtualservice.sh
+./tools/keycloak-setup-virtualservice.sh
 
 # echo proxy url
 echo 
