@@ -68,8 +68,8 @@ kubectl apply -f platform-owners/demo/demo-edge-config.yaml
 ./tools/wait-for-rollout.sh deployment gloo-portal-controller gloo-portal 5
 ./tools/wait-for-rollout.sh deployment gloo-portal-admin-server gloo-portal 5
 # wait for bookinfo deployment
-../tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v1 10
-../tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v2 10
+./tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v1 10
+./tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v2 10
 
 # hack to get around CORS race issue
 kubectl delete portal ecommerce-portal
