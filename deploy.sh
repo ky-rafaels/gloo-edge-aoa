@@ -71,10 +71,6 @@ kubectl apply -f platform-owners/demo/demo-edge-config.yaml
 ./tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v1 10
 ./tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v2 10
 
-# hack to get around CORS race issue
-kubectl delete portal ecommerce-portal
-# argocd will recreate the portal with correct CORS config
-
 # echo proxy url
 echo 
 echo "installation complete:"
