@@ -16,12 +16,12 @@ spec:
       skipCrds: true
       values: |
         gloo-fed:
-          enabled: false
+          enabled: true
           create_license_secret: false
         gloo-ee:
           create_license_secret: false
           gloo-fed:
-            enabled: false
+            enabled: true
             create_license_secret: false
           gloo:
             license_secret_name: "license"
