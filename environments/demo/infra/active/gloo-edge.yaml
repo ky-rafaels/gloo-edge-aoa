@@ -15,7 +15,16 @@ spec:
     helm:
       skipCrds: true
       values: |
-        license_key: eyJleHAiOjE2NDUyMTAwMzQsImlhdCI6MTY0MjYxODAzNCwiayI6IjRlZTJEUSIsImx0IjoidHJpYWwiLCJwcm9kdWN0IjoiZ2xvbyJ9.1uwlkqzhwM9G_AksQgZNRMObduxKWKeEo-DLnNAk4-k
+        gloo-fed:
+          enabled: false
+          create_license_secret: false
+        gloo-ee:
+          create_license_secret: false
+          gloo-fed:
+            enabled: false
+            create_license_secret: false
+          gloo:
+            license_secret_name: "license"
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.10.4
   syncPolicy:
