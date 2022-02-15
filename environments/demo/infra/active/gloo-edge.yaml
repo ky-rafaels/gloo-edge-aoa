@@ -13,7 +13,7 @@ spec:
   source:
     chart: gloo-ee
     helm:
-      skipCrds: false
+      skipCrds: true
       values: |
         license_key: eyJleHAiOjE2NDUyMTAwMzQsImlhdCI6MTY0MjYxODAzNCwiayI6IjRlZTJEUSIsImx0IjoidHJpYWwiLCJwcm9kdWN0IjoiZ2xvbyJ9.1uwlkqzhwM9G_AksQgZNRMObduxKWKeEo-DLnNAk4-k
     repoURL: http://storage.googleapis.com/gloo-ee-helm
