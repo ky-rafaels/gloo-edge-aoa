@@ -15,19 +15,13 @@ spec:
     helm:
       skipCrds: true
       values: |
+        create_license_secret: false
+        license_secret_name: license
         gloo-fed:
           enabled: false
           create_license_secret: false
           glooFedApiserver:
             enable: false
-        gloo-ee:
-          create_license_secret: false
-          license_secret_name: "license"
-          gloo-fed:
-            enabled: false
-            glooFedApiserver:
-              enable: false
-            create_license_secret: false            
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.9.10
   syncPolicy:
