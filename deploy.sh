@@ -50,7 +50,7 @@ EOF
 
 # install argocd 
 cd bootstrap-argocd
-./install-argocd.sh
+./install-argocd.sh insecure-rootpath
 cd ..
 
 # wait for argo cluster rollout
