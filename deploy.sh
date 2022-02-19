@@ -64,12 +64,6 @@ kubectl apply -f platform-owners/demo/demo-edge-config.yaml
 
 # wait for gloo edge deployment
 ./tools/wait-for-rollout.sh deployment gateway gloo-system 10
-# wait for gloo portal deployment
-./tools/wait-for-rollout.sh deployment gloo-portal-controller gloo-portal 5
-./tools/wait-for-rollout.sh deployment gloo-portal-admin-server gloo-portal 5
-# wait for bookinfo deployment
-./tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v1 10
-./tools/wait-for-rollout.sh deployment productpage-v1 bookinfo-v2 10
 
 # echo proxy url
 echo 
