@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/ably77/gloo-edge-aoa/
-    targetRevision: test-1-9
+    targetRevision: diego
     path: environments/demo/apps/active/
   destination:
     server: https://kubernetes.default.svc
