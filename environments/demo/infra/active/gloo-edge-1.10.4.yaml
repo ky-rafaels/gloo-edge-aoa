@@ -34,7 +34,11 @@ spec:
                   accessLog:
                     - fileSink:
                         path: /dev/stdout
-                        stringFormat: ""
+                        jsonFormat:
+                          protocol: "%PROTOCOL%"
+                          duration: "%DURATION%"
+                          upstreamCluster: "%UPSTREAM_CLUSTER%"
+                          upstreamHost: "%UPSTREAM_HOST%"
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.10.4
   syncPolicy:
