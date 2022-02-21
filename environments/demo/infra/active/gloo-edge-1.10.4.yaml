@@ -27,6 +27,14 @@ spec:
           gateway:
             validation:
               warnRouteShortCircuiting: true
+          gatewayProxies:
+            gatewayProxy:
+              gatewaySettings:
+                accessLoggingService:
+                  accessLog:
+                    - fileSink:
+                        path: /dev/stdout
+                        stringFormat: ""
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.10.4
   syncPolicy:

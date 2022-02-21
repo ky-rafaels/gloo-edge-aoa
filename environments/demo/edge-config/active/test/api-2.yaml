@@ -1,0 +1,24 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteTable
+metadata:
+  name: 'api-routes'
+  namespace: 'gloo-system'
+spec:
+  weight: 10
+  routes:
+  - matchers:
+    - prefix: /api/w2/safety/v2/
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - regex: /api/e[0-9]+/.*
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
