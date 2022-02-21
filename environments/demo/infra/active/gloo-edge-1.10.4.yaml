@@ -35,10 +35,7 @@ spec:
                     - fileSink:
                         path: /dev/stdout
                         stringFormat: >
-                          [%START_TIME%] "%REQ(X-ENVOY-ORIGINAL-METHOD?:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%"
-                          %RESPONSE_CODE% %RESPONSE_FLAGS% %BYTES_RECEIVED% %BYTES_SENT% %DURATION%
-                          %RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)% "%REQ(X-FORWARDED-FOR)%" "%REQ(USER-AGENT)%"
-                          "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%" "%ROUTE_NAME%"
+                          "%ROUTE_NAME%"
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.10.4
   syncPolicy:
