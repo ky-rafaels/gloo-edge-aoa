@@ -1,0 +1,31 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteTable
+metadata:
+  name: 'root-routes'
+  namespace: 'gloo-system'
+spec:
+  routes:
+  - matchers:
+    - regex: /v[0-9]+/.*
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /admin/fleetcard
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'

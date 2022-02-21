@@ -22,6 +22,10 @@ spec:
           create_license_secret: false
           glooFedApiserver:
             enable: false
+        gloo:
+          gateway:
+            validation:
+              warnRouteShortCircuiting: true
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.9.10
   syncPolicy:

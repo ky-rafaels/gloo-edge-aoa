@@ -1,0 +1,81 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteTable
+metadata:
+  name: 'api-routes'
+  namespace: 'gloo-system'
+spec:
+  routes:
+  - matchers:
+    - prefix: /api/w2/safety/v2/
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /api/w2/compliance/v1/
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /api/fmp/
+    - prefix: /api/slb/
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /api/growth/
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /api/v1/fleetcard
+    - prefix: /api/w2/fleetcard
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - regex: /api/e[0-9]+/.*
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - regex: /api/w[0-9]+/.*
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - regex: /api/v[0-9]+/.*
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
+  - matchers:
+    - prefix: /api/
+    routeAction:
+      single:
+        upstream:
+          name: 'default-httpbin-8000'
+    options:
+        prefixRewrite: '/'
