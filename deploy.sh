@@ -67,28 +67,4 @@ kubectl apply -f platform-owners/demo/demo-edge-config.yaml
 
 # echo proxy url
 echo 
-echo "installation complete:"
-echo
-echo "run the commands below to access argocd dashboard at argocd.example.com and gloo-portal demo at portal.example.com"
-echo 
-echo "cat <<EOF | sudo tee -a /etc/hosts"
-echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') argocd.example.com"
-echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') portal.example.com"
-echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') api.example.com"
-echo "EOF"
-echo
-echo "access argocd at http://argocd.example.com/argo"
-echo "alternatively, access argocd using port-forward command: kubectl port-forward svc/argocd-server -n argocd 8080:443"
-echo
-echo "argocd credentials:"
-echo "user: admin"
-echo "password: solo.io"
-echo 
-echo "access the bookinfo application at: $(glooctl proxy url --port https | cut -d: -f1-2)/productpage"
-echo 
-echo "access petstore-portal at https://portal.example.com"
-echo
-echo "gloo-portal credentials:"
-echo "user: developer1"
-echo "password: gloo-portal1"
-echo
+echo "run glooctl check"
