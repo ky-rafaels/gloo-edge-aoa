@@ -8,6 +8,7 @@ spec:
   routes:
   - matchers:
     - prefix: /admin/fleetcard
+    name: admin-fleetcard
     routeAction:
       single:
         upstream:
@@ -16,6 +17,7 @@ spec:
         prefixRewrite: '/'
   - matchers:
     - regex: /v[0-9]+/.*
+    name: root-regex
     routeAction:
       single:
         upstream:

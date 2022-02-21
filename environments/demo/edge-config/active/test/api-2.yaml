@@ -8,6 +8,7 @@ spec:
   routes:
   - matchers:
     - prefix: /api/w2/safety/v2/
+    name: api-w2-safety-v2
     routeAction:
       single:
         upstream:
@@ -16,6 +17,7 @@ spec:
         prefixRewrite: '/'
   - matchers:
     - regex: /api/e[0-9]+/.*
+    name: api-regex
     routeAction:
       single:
         upstream:
