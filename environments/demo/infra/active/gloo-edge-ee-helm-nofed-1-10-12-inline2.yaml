@@ -14,8 +14,10 @@ spec:
     chart: gloo-ee
     helm:
       skipCrds: false
+      parameters:
+        - name: create_license_secret
+          value: 'false'
       values: |
-        create_license_secret: "false"
         gloo:
           license_secret_name: license
         gloo-fed:
