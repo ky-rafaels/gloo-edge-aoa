@@ -15,7 +15,11 @@ spec:
     helm:
       skipCrds: false
       values: |
-        create_license_secret: false
+        create_license_secret: "false"
+        global:
+          extensions:
+            glooRedis:
+              enableAcl: false
         gloo:
           license_secret_name: license
         gloo-fed:
