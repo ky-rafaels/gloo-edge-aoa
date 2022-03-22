@@ -13,17 +13,16 @@ spec:
   source:
     chart: gloo-ee
     helm:
-      skipCrds: true
       values: |
         create_license_secret: false
         license_secret_name: license
         gloo-fed:
-          enabled: false
+          enabled: true
           create_license_secret: false
           glooFedApiserver:
             enable: false
     repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.9.10
+    targetRevision: 1.8.25
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
