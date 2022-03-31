@@ -57,7 +57,7 @@ cd ..
 ./tools/wait-for-rollout.sh deployment argocd-server argocd 10
 
 # deploy edge demo
-#kubectl apply -f platform-owners/demo/demo-cluster-config.yaml 
+kubectl apply -f platform-owners/demo/demo-cluster-config.yaml 
 kubectl apply -f platform-owners/demo/demo-apps.yaml 
 kubectl apply -f platform-owners/demo/demo-infra.yaml 
 kubectl apply -f platform-owners/demo/demo-edge-config.yaml 
