@@ -23,7 +23,7 @@ spec:
               disabled: false # overwrite the "default" value in the merge step
               kind:
                 deployment:
-                  replicas: 2
+                  replicas: 1
               service:
                 kubeResourceOverride: # workaround for https://github.com/solo-io/gloo/issues/5297
                   spec:
@@ -34,11 +34,14 @@ spec:
                         targetPort: 8443
                     type: LoadBalancer
               gatewaySettings:
+                customHttpGateway: # using the default HTTP Gateway
+                  virtualServiceSelector:
+                    gateway-type: public # label set on the VirtualService
                 customHttpsGateway: # using the default HTTPS Gateway
                   virtualServiceSelector:
                     gateway-type: public # label set on the VirtualService
-                disableHttpGateway: true # disable the default HTTP Gateway    
-                disableHttpsGateway: false # disable the default HTTPS Gateway
+                disableHttpGateway: false # disable the default HTTP Gateway    
+                disableHttpsGateway: true # disable the default HTTPS Gateway
             corpGw: # Proxy name for private access (intranet facing)
               disabled: false # overwrite the "default" value in the merge step
               service:
@@ -51,8 +54,11 @@ spec:
                 customHttpGateway: # using the default HTTP Gateway
                   virtualServiceSelector:
                     gateway-type: private # label set on the VirtualService
-                disableHttpGateway: true # disable the default HTTP Gateway    
-                disableHttpsGateway: false # disable the default HTTPS Gateway
+                customHttpsGateway: # using the default HTTPS Gateway
+                  virtualServiceSelector:
+                    gateway-type: private # label set on the VirtualService
+                disableHttpGateway: false # disable the default HTTP Gateway    
+                disableHttpsGateway: true # disable the default HTTPS Gateway
             gatewayProxy:
               disabled: true # disable the default gateway-proxy deployment and its 2 default Gateway CRs
 
