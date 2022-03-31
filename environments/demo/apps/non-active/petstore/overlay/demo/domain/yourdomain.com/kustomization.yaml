@@ -9,4 +9,4 @@ resources:
 patchesStrategicMerge:
 - patch/domain-patch.yaml
 #- patch/tls-patch.yaml
-#- patch/portal-patch.yaml
+- patch/portal-patch.yaml
