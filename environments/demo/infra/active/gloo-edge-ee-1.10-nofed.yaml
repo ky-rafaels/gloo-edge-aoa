@@ -18,6 +18,42 @@ spec:
         create_license_secret: false
         gloo:
           license_secret_name: license
+          gatewayProxies:
+            publicGw: # Proxy name for public access (Internet facing)
+              disabled: false # overwrite the "default" value in the merge step
+              kind:
+                deployment:
+                  replicas: 2
+              service:
+                kubeResourceOverride: # workaround for https://github.com/solo-io/gloo/issues/5297
+                  spec:
+                    ports:
+                      - port: 443
+                        protocol: TCP
+                        name: https
+                        targetPort: 8443
+                    type: LoadBalancer
+              gatewaySettings:
+                customHttpsGateway: # using the default HTTPS Gateway
+                  virtualServiceSelector:
+                    gateway-type: public # label set on the VirtualService
+                disableHttpGateway: true # disable the default HTTP Gateway
+            corpGw: # Proxy name for private access (intranet facing)
+              disabled: false # overwrite the "default" value in the merge step
+              service:
+                httpPort: 80
+                httpsFirst: false
+                httpsPort: 443
+                #httpNodePort: 32080 # random port to be fixed in your private network
+                type: LoadBalancer
+              gatewaySettings:
+                customHttpGateway: # using the default HTTP Gateway
+                  virtualServiceSelector:
+                    gateway-type: private # label set on the VirtualService
+                disableHttpsGateway: false # disable the default HTTPS Gateway
+            gatewayProxy:
+              disabled: true # disable the default gateway-proxy deployment and its 2 default Gateway CRs
+
         gloo-fed:
           enabled: false
           create_license_secret: false

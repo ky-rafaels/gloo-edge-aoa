@@ -1,0 +1,9 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Portal
+metadata:
+  name: ecommerce-portal
+  namespace: default
+spec:
+  gatewayConfig:
+    labels:
+      gateway-type: external
