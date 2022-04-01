@@ -40,8 +40,8 @@ spec:
                 customHttpsGateway: # using the default HTTPS Gateway
                   virtualServiceSelector:
                     gateway-type: public # label set on the VirtualService
-                disableHttpGateway: false # disable the default HTTP Gateway    
-                disableHttpsGateway: true # disable the default HTTPS Gateway
+                disableHttpGateway: true # disable the default HTTP Gateway    
+                disableHttpsGateway: false # disable the default HTTPS Gateway
             corpGw: # Proxy name for private access (intranet facing)
               disabled: false # overwrite the "default" value in the merge step
               service:

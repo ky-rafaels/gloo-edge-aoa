@@ -1,14 +1,14 @@
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Environment
 metadata:
-  name: internal-dev
+  name: external-dev
   namespace: default
 spec:
   domains:
     - api.example.com # the domain name where the API will be exposed
   displayInfo:
-    description: This is an internal corp facing environment
-    displayName: Internal-Development
+    description: This environment uses the external gateway and is meant for customers to deploy and test their APIs.
+    displayName: Development
   parameters:
     usagePlans:
       basic:

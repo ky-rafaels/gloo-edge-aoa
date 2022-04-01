@@ -1,11 +1,11 @@
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Portal
 metadata:
-  name: ecommerce-portal
+  name: external-ecommerce-portal
   namespace: default
 spec:
-  displayName: Internal E-commerce Portal
-  description: Gloo Portal for the Petstore API using internal gateway!
+  displayName: External Customer Facing E-commerce Portal
+  description: Gloo Portal for the Petstore API using external gateway!
   banner:
     fetchUrl: https://i.imgur.com/EXbBN1a.jpg
   favicon:
@@ -16,10 +16,10 @@ spec:
   staticPages: []
 
   domains:
-  - portal.example.com
+  - portal.external.example.com
 
   publishedEnvironments:
-  - name: dev
+  - name: external-dev
     namespace: default
 
   allApisPublicViewable: false

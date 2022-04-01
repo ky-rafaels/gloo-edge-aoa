@@ -1,7 +1,7 @@
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Portal
 metadata:
-  name: ecommerce-portal
+  name: external-ecommerce-portal
   namespace: default
 spec:
   tls:
@@ -12,7 +12,7 @@ spec:
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Environment
 metadata:
-  name: dev
+  name: external-dev
   namespace: default
 spec:
   gatewayConfig:
@@ -22,5 +22,5 @@ spec:
           name: upstream-tls
           namespace: gloo-system
         sniDomains:
-        - '*.example.com'
+        - '*.external.example.com'
       enabled: true

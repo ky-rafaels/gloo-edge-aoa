@@ -8,10 +8,28 @@ spec:
   - portal.example.com
 ---
 apiVersion: portal.gloo.solo.io/v1beta1
+kind: Portal
+metadata:
+  name: external-ecommerce-portal
+  namespace: default
+spec:
+  domains:
+  - portal.external.example.com
+---
+apiVersion: portal.gloo.solo.io/v1beta1
 kind: Environment
 metadata:
-  name: dev
+  name: internal-dev
   namespace: default
 spec:
   domains:
     - api.example.com # the domain name where the API will be exposed
+---
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Environment
+metadata:
+  name: external-dev
+  namespace: default
+spec:
+  domains:
+    - api.external.example.com # the domain name where the API will be exposed

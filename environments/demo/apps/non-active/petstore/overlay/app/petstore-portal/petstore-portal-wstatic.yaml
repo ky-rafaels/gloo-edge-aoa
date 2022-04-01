@@ -4,8 +4,8 @@ metadata:
   name: ecommerce-portal
   namespace: default
 spec:
-  displayName: E-commerce Portal
-  description: The Gloo Portal for the Petstore API and much more!
+  displayName: Internal E-commerce Portal
+  description: Gloo Portal for the Petstore API using internal gateway!
   banner:
     fetchUrl: https://i.imgur.com/EXbBN1a.jpg
   favicon:
@@ -29,7 +29,9 @@ spec:
   - portal.example.com
 
   publishedEnvironments:
-  - name: dev
+  - name: internal-dev
+    namespace: default
+  - name: external-dev
     namespace: default
 
   allApisPublicViewable: false

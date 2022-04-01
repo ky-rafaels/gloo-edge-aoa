@@ -10,6 +10,8 @@ resources:
 - petstore-portal-wstatic.yaml
 #- dev-environment.yaml
 - dev-environment-wplan.yaml
+- external-petstore-portal.yaml
+- external-environment-wplan.yaml
 
 #patchesStrategicMerge:
 #- patch/domain-patch.yaml

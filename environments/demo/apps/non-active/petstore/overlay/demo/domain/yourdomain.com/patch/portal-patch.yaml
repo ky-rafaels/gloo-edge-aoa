@@ -7,3 +7,13 @@ spec:
   gatewayConfig:
     labels:
       gateway-type: private
+---
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Portal
+metadata:
+  name: external-ecommerce-portal
+  namespace: default
+spec:
+  gatewayConfig:
+    labels:
+      gateway-type: public 
