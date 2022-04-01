@@ -22,5 +22,5 @@ spec:
           name: upstream-tls
           namespace: gloo-system
         sniDomains:
-        - '*.yourdomain.com'
+        - '*.example.com'
       enabled: true
