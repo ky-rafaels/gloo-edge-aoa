@@ -31,7 +31,5 @@ spec:
   publishedEnvironments:
   - name: internal-dev
     namespace: default
-  - name: external-dev
-    namespace: default
 
   allApisPublicViewable: false

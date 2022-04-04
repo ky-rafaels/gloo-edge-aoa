@@ -1,17 +1,17 @@
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Group
 metadata:
-  name: developers
+  name: external-developers
   namespace: gloo-portal
 spec:
   accessLevel:
     portals:
-    - name: ecommerce-portal
+    - name: external-ecommerce-portal
       namespace: default
     apis:
     - products:
         namespaces:
-        - "*"
+        - default
         labels:
         - key: app
           operator: Equals
@@ -21,12 +21,12 @@ spec:
         namespaces:
         - default
         names:
-        - internal-dev
+        - external-dev
       usagePlans:
-      - basic
-  displayName: ecommerce developers
+      - trusted
+  displayName: external developers
   userSelector:
     matchLabels:
-      groups.portal.gloo.solo.io/gloo-portal.developers: "true"
+      groups.portal.gloo.solo.io/gloo-portal.external-developers: "true"
     namespaces:
-    - '*'
+    - default

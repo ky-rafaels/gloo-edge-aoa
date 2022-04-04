@@ -7,3 +7,4 @@ resources:
 - developer-group-wplan.yaml
 - developer1-user.yaml
 - developer1-password.yaml
+- external-dev-group.yaml

@@ -57,8 +57,8 @@ spec:
                 customHttpsGateway: # using the default HTTPS Gateway
                   virtualServiceSelector:
                     gateway-type: private # label set on the VirtualService
-                disableHttpGateway: false # disable the default HTTP Gateway    
-                disableHttpsGateway: true # disable the default HTTPS Gateway
+                disableHttpGateway: true # disable the default HTTP Gateway    
+                disableHttpsGateway: false # disable the default HTTPS Gateway
             gatewayProxy:
               disabled: true # disable the default gateway-proxy deployment and its 2 default Gateway CRs
 

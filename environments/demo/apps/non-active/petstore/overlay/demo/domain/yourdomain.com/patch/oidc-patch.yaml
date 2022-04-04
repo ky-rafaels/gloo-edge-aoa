@@ -1,0 +1,26 @@
+---
+  apiVersion: portal.gloo.solo.io/v1beta1
+  kind: Portal
+  metadata:
+    name: ecommerce-portal
+    namespace: default
+  spec:
+    oidcAuth:
+      clientId: internal-petstore
+      clientSecret:
+        name: default-portal-oidc-secret
+        namespace: default
+        key: client_secret # this is the k8s secret we have created above
+      groupClaimKey: group # we will use the 'group' claim in the 'id_token' to associate the user with a group
+      issuer: "http://13.58.62.33/auth/realms/master"
+    portalUrlPrefix: http://portal.example.com/
+---
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Group
+metadata:
+  name: external-developers
+  namespace: gloo-portal
+spec:
+  oidcGroup:
+    groupNames:
+    - users
