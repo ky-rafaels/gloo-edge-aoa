@@ -31,7 +31,7 @@ spec:
                       - port: 443
                         protocol: TCP
                         name: https
-                        targetPort: 9443
+                        targetPort: 8443
                     type: LoadBalancer
               gatewaySettings:
                 customHttpGateway: # using the default HTTP Gateway
