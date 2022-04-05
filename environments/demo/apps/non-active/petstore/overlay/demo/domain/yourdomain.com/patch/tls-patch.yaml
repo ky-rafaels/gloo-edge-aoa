@@ -6,7 +6,7 @@ metadata:
 spec:
   tls:
     secretRef:
-      name: upstream-tls
+      name: public-tls
       namespace: gloo-system
 ---
 apiVersion: portal.gloo.solo.io/v1beta1
@@ -19,8 +19,35 @@ spec:
     tls:
       config:
         secretRef:
-          name: upstream-tls
+          name: public-tls
           namespace: gloo-system
         sniDomains:
         - '*.external.example.com'
+      enabled: true
+---
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Portal
+metadata:
+  name: ecommerce-portal
+  namespace: default
+spec:
+  tls:
+    secretRef:
+      name: private-tls
+      namespace: gloo-system
+---
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Environment
+metadata:
+  name: internal-dev
+  namespace: default
+spec:
+  gatewayConfig:
+    tls:
+      config:
+        secretRef:
+          name: private-tls
+          namespace: gloo-system
+        sniDomains:
+        - '*.internal.corp'
       enabled: true

@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   domains:
-  - portal.example.com
+  - portal.internal.corp
 ---
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Portal
@@ -23,7 +23,7 @@ metadata:
   namespace: default
 spec:
   domains:
-    - api.example.com # the domain name where the API will be exposed
+  - api.internal.corp # the domain name where the API will be exposed
 ---
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Environment

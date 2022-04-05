@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   domains:
-    - api.example.com # the domain name where the API will be exposed
+    - api.internal.corp # the domain name where the API will be exposed
   displayInfo:
     description: This is an internal corp facing environment
     displayName: Internal-Development
