@@ -24,17 +24,17 @@ spec:
         sniDomains:
         - '*.external.example.com'
       enabled: true
-# ---
-# apiVersion: portal.gloo.solo.io/v1beta1
-# kind: Portal
-# metadata:
-#   name: ecommerce-portal
-#   namespace: default
-# spec:
-#   tls:
-#     secretRef:
-#       name: private-tls
-#       namespace: gloo-system
+---
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Portal
+metadata:
+  name: ecommerce-portal
+  namespace: default
+spec:
+  tls:
+    secretRef:
+      name: upstream-tls
+      namespace: gloo-system
 ---
 apiVersion: portal.gloo.solo.io/v1beta1
 kind: Environment
@@ -44,10 +44,10 @@ metadata:
 spec:
   gatewayConfig:
     tls:
-      # config:
-      #   secretRef:
-      #     name: private-tls
-      #     namespace: gloo-system
-      #   sniDomains:
-      #   - '*.internal.corp'
+      config:
+        secretRef:
+          name: upstream-tls
+          namespace: gloo-system
+        sniDomains:
+        - '*.internal.corp'
       enabled: false
